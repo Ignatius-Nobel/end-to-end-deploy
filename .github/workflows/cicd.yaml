@@ -64,8 +64,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y curl
-          curl -sSfL https://raw.githubusercontent.com/zricethezav/gitleaks/master/install.sh | bash
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+          curl -sSfL https://raw.githubusercontent.com/zricethezav/gitleaks/master/install.sh | sudo bash
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
           gitleaks version
           trivy --version
 
