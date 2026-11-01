@@ -60,14 +60,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y maven
 
-      - name: Install security tools
+      - name: Verify security tools are installed
         run: |
           set -e
-          sudo apt-get update
-          sudo apt-get install -y curl
-          sudo curl -sSfL https://raw.githubusercontent.com/gitleaks/gitleaks/master/install.sh | sudo bash
-          sudo curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
-          ls -l /usr/local/bin/gitleaks /usr/local/bin/trivy
           gitleaks version
           trivy --version
 
