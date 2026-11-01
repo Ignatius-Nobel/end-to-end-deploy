@@ -27,6 +27,13 @@ jobs:
         with:
           java-version: '17'
           distribution: temurin
+          cache: maven
+
+      - name: Install Maven
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y maven
+          mvn -v
 
       - name: Compile with Maven
         run: mvn -B -ntp compile
@@ -46,8 +53,14 @@ jobs:
         with:
           java-version: '17'
           distribution: temurin
+          cache: maven
 
-      - name: Download Maven dependencies (Trivy reads them from the local cache)
+      - name: Install Maven
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y maven
+
+      - name: Download Maven dependencies
         run: mvn -B -ntp dependency:resolve
 
       - name: Gitleaks secret scan
